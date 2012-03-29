@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'railscasts_download'
+require 'optparse'
+
+options = {}
+
+optparse = OptionParser.new do|opts|
+  opts.banner = "Usage: railscasts_download [options]"
+
+  options[:rss_uri] = false
+  opts.on( '-r', '--rss_uri RSS_URI', 'Get file specified by URI as videos list source.' ) do |rss_uri|
+    options[:rss_uri] = rss_uri
+  end
+
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    puts "RSS_URI could be a remote url or local file system path"
+    exit
+  end
+end
+
+optparse.parse!
+
+saver = RailscastsDownload::Saver.new( options )
+saver.get_all
