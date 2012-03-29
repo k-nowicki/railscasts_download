@@ -1,0 +1,21 @@
+  native-path:          /sys/devices/LNXSYSTM:00/device:00/PNP0A08:00/device:09/PNP0C09:00/PNP0C0A:00/power_supply/BAT0
+  vendor:               SONY
+  model:                42T4795
+  serial:               6804
+  power supply:         yes
+  updated:              Sun Mar 25 22:56:15 2012 (22 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  battery
+    present:             yes
+    rechargeable:        yes
+    state:               fully-charged
+    energy:              62.9532 Wh
+    energy-empty:        0 Wh
+    energy-full:         63.8928 Wh
+    energy-full-design:  60.6528 Wh
+    energy-rate:         0 W
+    voltage:             12.187 V
+    percentage:          98.5294%
+    capacity:            100%
+    technology:          lithium-ion
