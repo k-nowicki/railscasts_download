@@ -1,4 +1,4 @@
-# Railscasts Downloader
+# Railscasts Download
 
 Download all revised and pro railscasts with one-line command!
 
