@@ -2,15 +2,21 @@
 
 Download all revised and pro railscasts with one-line command!
 
-Downloader use Railscasts rss feed to get list of all videos. At the time for downloading pro videos, rss content must be provide
-explicitly by user (see examples).
+Downloader use Railscasts rss feed to get list of all videos. Automatic downloads for pro accounts added in V 0.2.0.
 
 ## Example
+only free railscasts downloads:
 
-login first to get access to railscasts pro rss feed, copy and save it as file named pro_railscasts.rss
-(automatically download pro rss coming soon)
+    railscasts_download
 
-    railscasts_download --rss_uri /home/yourname/pro_railscasts.rss   #create rss file first!
+All railscasts including revised and pro (pro account required):
+
+    railscasts_download --revised -l my_login@railscasts.com
+    > Enter your password:  *********
+
+custom railscasts list:
+
+    railscasts_download --rss_uri /home/yourname/custom_railscasts_list.rss
 
 or simply put:
 
