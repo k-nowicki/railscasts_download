@@ -24,7 +24,6 @@ module RailscastsDownload
       @rss.get_uris
     end
 
-
     def missing_videos_uris
       videos_filenames = videos_uris.map { |url| url.split( '/' ).last }
       missing_files = videos_filenames - Dir.glob( '*.mp4' )
