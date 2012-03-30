@@ -29,6 +29,7 @@ to get only free railscasts.
 
  * Ruby >= 1.9.2
  * Bundler
+ * GNU wget
 
 ## Running tests
 
