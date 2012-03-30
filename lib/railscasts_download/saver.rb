@@ -6,10 +6,11 @@ module RailscastsDownload
   class Saver
     def initialize( options={} )
       @downloader = options[:downloader] || Downloader.new
-      options[:rss_uri] ||= "http://feeds.feedburner.com/railscasts" unless options[:revised]
-      options[:login_uri] ||= "http://railscasts.com/login" if options[:revised]
+      options[:rss_uri] ||= "http://feeds.feedburner.com/railscasts" unless options[:pro]
+      options[:login_uri] ||= "http://railscasts.com/login" if options[:pro]
       @page = options[:page_explorer] || PageExplorer.new( options )
       @rss = options[:rss_explorer] || RssExplorer.new( @page.get_rss_body )
+      @after = options[:after]
     end
 
     def get_all
@@ -21,7 +22,7 @@ module RailscastsDownload
     end
 
     def videos_uris
-      @rss.get_uris
+      @rss.get_uris( after: @after )
     end
 
     def missing_videos_uris

@@ -3,7 +3,7 @@ module RailscastsDownload
     require 'mechanize'
 
     def initialize( options = {} )
-      if options[:revised]
+      if options[:pro]
         @login_uri = options[:login_uri]
         @login     = options[:login]
         @password = options[:password]

@@ -8,18 +8,25 @@ Downloader use Railscasts rss feed to get list of all videos. Automatic download
 
 All railscasts including revised and pro (pro account required):
 
-    railscasts_download --revised -l my_login@railscasts.com
+    railscasts_download --pro -login my_login@railscasts.com
     > Enter your password:  *********
 
 custom railscasts list:
 
     railscasts_download --rss_uri /home/yourname/custom_railscasts_list.rss
 
+
 or simply put:
 
     railscasts_download
 
-to get only free railscasts.
+to get all free railscasts.
+You can also download only latest railscasts providing option --after.
+Put:
+
+    railscasts_download --help
+
+to get available options list.
 
 ## Installation
 
