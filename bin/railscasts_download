@@ -7,7 +7,7 @@ require 'highline/import'
 options = {}
 
 optparse = OptionParser.new do|opts|
-  opts.banner = "Usage: railscasts_download [options][--revised --login LOGIN --password PASSWORD]"
+  opts.banner = "Usage: railscasts_download [options][--pro --login LOGIN]"
 
   options[:rss_uri] = false
   opts.on( '-r', '--rss_uri RSS_URI', 'Get file specified by URI as videos list source.
