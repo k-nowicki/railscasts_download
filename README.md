@@ -8,7 +8,7 @@ Downloader use Railscasts rss feed to get list of all videos. Automatic download
 
 All railscasts including revised and pro (pro account required):
 
-    railscasts_download --pro -login my_login@railscasts.com
+    railscasts_download --pro --login my_login@railscasts.com
     > Enter your password:  *********
 
 custom railscasts list:
