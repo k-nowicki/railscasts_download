@@ -15,21 +15,20 @@ module RailscastsDownload
     def get_rss_body
       if @login
         login_to_pro( @login_uri, @login, @password )
-        link = get_rss_link
-        @body = link.click.body
+        @body = pro_rss_link.click.body
       else
         @body = open( @free_uri ).read
       end
-      @body
     end
 
     private
-      def get_rss_link
-        @agent.links.map{|link| link if link.text == "Rss"}.compact.first
+      def pro_rss_link
+        @page_with_rss_link = @agent.mech.get("https://railscasts.com/subscriptions/current")
+        @page_with_rss_link.links.map{|link| link if link.text == "RSS Feed"}.compact.first
       end
 
-      def valid_signed_in!
-        unless get_rss_link
+      def validate_signed_in!
+        unless @page.links.map{|link| link if link.text == "Rss"}.compact.first
           puts '!!! Bad login/password combination !!!'
           exit
         end
@@ -39,8 +38,8 @@ module RailscastsDownload
         @agent = Mechanize.new.get( login_uri )
         @agent.form.login = login
         @agent.form.password = password
-        @agent = @agent.form.submit
-        valid_signed_in!
+        @page = @agent.form.submit
+        validate_signed_in!
       end
   end
 end

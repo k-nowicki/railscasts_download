@@ -2,7 +2,7 @@
 
 Download all revised and pro railscasts with one-line command!
 
-Downloader use Railscasts rss feed to get list of all videos. Automatic downloads for pro accounts added in V 0.2.0.
+Downloader use Railscasts rss feed to get list of all videos. Automatic downloads for pro accounts working with V > 0.2.2.
 
 ## Example
 
