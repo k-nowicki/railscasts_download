@@ -26,7 +26,7 @@ optparse = OptionParser.new do|opts|
   end
 
   options[:login_uri] = false
-  opts.on( '-u', '--login_uri LOGIN_URI', 'Specify Login URI (required if it`s has been changed`).' ) do |login_uri|
+  opts.on( '-u', '--login_uri LOGIN_URI', 'Specify Login URI (required if it`s has been changed).' ) do |login_uri|
     options[:login_uri] = login_uri
   end
 
