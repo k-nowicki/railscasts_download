@@ -1,8 +1,14 @@
 class RailscastsDownloadInEmptyEnvTestClear < Test::Unit::TestCase
+
   def setup
     source_file = File.dirname( __FILE__ ) + '/../fixtures/rss.txt'
     downloader = StubDownloader.new
-    @saver =  RailscastsDownload::Saver.new( downloader: downloader, rss_uri: source_file )
+    rss_explorer = StubRssExplorer.new
+    page_explorer = StubPageExplorer.new
+    @saver =  RailscastsDownload::Saver.new( downloader: downloader,
+                                             rss_explorer: rss_explorer,
+                                             page_explorer: page_explorer,
+                                             rss_uri: source_file )
   end
   #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -25,18 +31,24 @@ class RailscastsDownloadInEmptyEnvTestClear < Test::Unit::TestCase
   end
 
   def test_videos_uris_returns_all_uris
-    assert_equal( 311, @saver.videos_uris.count )
+    assert_equal( 6, @saver.videos_uris.count )
   end
 
   def test_missing_videos_uris_returns_all_uris
-    assert_equal( 311, @saver.missing_videos_uris.count )
+    assert_equal( 6, @saver.missing_videos_uris.count )
   end
 end
 
 class RailscastsDownloadWithSomeVideoesTest < Test::Unit::TestCase
   def setup
     source_file = File.dirname( __FILE__ ) + '/../fixtures/rss.txt'
-    @saver =  RailscastsDownload::Saver.new( rss_uri: source_file )
+    downloader = StubDownloader.new
+    rss_explorer = StubRssExplorer.new
+    page_explorer = StubPageExplorer.new
+    @saver =  RailscastsDownload::Saver.new( downloader: downloader,
+                                             rss_explorer: rss_explorer,
+                                             page_explorer: page_explorer,
+                                             rss_uri: source_file )
     File.new( "001-caching-with-instance-variables.mp4", "w+" ).close
   end
 
@@ -51,10 +63,10 @@ class RailscastsDownloadWithSomeVideoesTest < Test::Unit::TestCase
   end
 
   def test_videos_uris_returns_all_uris
-    assert_equal( 311, @saver.videos_uris.count )
+    assert_equal( 6, @saver.videos_uris.count )
   end
 
   def test_missing_videos_uris_returns_only_missing_uris
-    assert_equal( 310, @saver.missing_videos_uris.count )
+    assert_equal( 5, @saver.missing_videos_uris.count )
   end
 end

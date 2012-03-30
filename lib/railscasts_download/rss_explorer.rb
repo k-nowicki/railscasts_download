@@ -1,9 +1,10 @@
 module RailscastsDownload
-  class Rss
+  class RssExplorer
     require 'rss'
 
-    def initialize( uri )
-      get_rss( uri )
+    def initialize( rss_body )
+      @body = rss_body
+      get_rss
     end
 
     def get_uris
@@ -12,8 +13,8 @@ module RailscastsDownload
 
     private
 
-      def get_rss( uri )
-        @rss = RSS::Parser.parse( open( uri ).read, false )
+      def get_rss
+        @rss = RSS::Parser.parse( @body, false )
       end
   end
 end

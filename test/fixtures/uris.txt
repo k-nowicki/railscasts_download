@@ -1,0 +1,6 @@
+http://media.railscasts.com/assets/episodes/videos/001-caching-with-instance-variables.mp4
+http://media.railscasts.com/assets/episodes/videos/002-dynamic-find-by-methods.mp4
+http://media.railscasts.com/assets/episodes/videos/332-refinery-cms-basics.mp4
+http://media.railscasts.com/assets/episodes/videos/330-better-sass-with-bourbon.mp4
+http://media.railscasts.com/assets/episodes/videos/328-twitter-bootstrap-basics.mp4
+http://media.railscasts.com/assets/episodes/videos/326-activeattr.mp4

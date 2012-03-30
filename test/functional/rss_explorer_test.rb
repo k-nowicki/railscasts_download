@@ -1,8 +1,7 @@
-
-class RssTest < Test::Unit::TestCase
+class RssExplorerbTest < Test::Unit::TestCase
   def setup
     source_file = File.dirname( __FILE__ ) + '/../fixtures/rss.txt'
-    @rss =  RailscastsDownload::Rss.new( source_file )
+    @rss =  RailscastsDownload::RssExplorer.new( open( source_file ).read )
   end
   #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

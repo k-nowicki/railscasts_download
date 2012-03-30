@@ -1,13 +1,16 @@
 #Setup env here to speedup (true) or reality (false)
-MOCKED_RSS         = true
-STUBBED_DOWNLOADER = true
+STUBBED    = true
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 class RailscastDownloadTest < Test::Unit::TestCase
   def setup
-    source_file = File.dirname( __FILE__ ) + '/../fixtures/rss.txt' if MOCKED_RSS
-    downloader = StubDownloader.new if STUBBED_DOWNLOADER
-    @saver =  RailscastsDownload::Saver.new( downloader: downloader, rss_uri: source_file )
+    options ={
+      source_file: File.dirname( __FILE__ ) + '/../fixtures/rss.txt',
+      downloader: StubDownloader.new,
+      rss_explorer: StubRssExplorer.new,
+      page_explorer: StubPageExplorer.new
+    } if STUBBED
+    @saver =  RailscastsDownload::Saver.new( options )
   end
 
   def teardown

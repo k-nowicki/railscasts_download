@@ -2,15 +2,31 @@
 
 require 'railscasts_download'
 require 'optparse'
+require 'highline/import'
 
 options = {}
 
 optparse = OptionParser.new do|opts|
-  opts.banner = "Usage: railscasts_download [options]"
+  opts.banner = "Usage: railscasts_download [options][--revised --login LOGIN --password PASSWORD]"
 
   options[:rss_uri] = false
-  opts.on( '-r', '--rss_uri RSS_URI', 'Get file specified by URI as videos list source.' ) do |rss_uri|
+  opts.on( '-rss', '--rss_uri RSS_URI', 'Get file specified by URI as videos list source.' ) do |rss_uri|
     options[:rss_uri] = rss_uri
+  end
+
+  options[:revised] = false
+  opts.on( '-r', '--revised', 'Get all railscasts with revised and pro (login required).' ) do
+    options[:revised] = true
+  end
+
+  options[:login_uri] = false
+  opts.on( '-luri', '--login_uri LOGIN_URI', 'Specify Login URI (required if it`s has been changed`).' ) do |login_uri|
+    options[:login_uri] = login_uri
+  end
+
+  options[:login] = false
+  opts.on( '-l', '--login YOUR_MAIL', 'Specify your login (email) which you are using to login to railscasts.' ) do |login|
+    options[:login] = login
   end
 
   opts.on( '-h', '--help', 'Display this screen' ) do
@@ -21,6 +37,8 @@ optparse = OptionParser.new do|opts|
 end
 
 optparse.parse!
+
+options[:password] = ask("Enter your password:  ") { |q| q.echo = "*" } if options[:revised]
 
 saver = RailscastsDownload::Saver.new( options )
 saver.get_all
