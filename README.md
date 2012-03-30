@@ -5,9 +5,6 @@ Download all revised and pro railscasts with one-line command!
 Downloader use Railscasts rss feed to get list of all videos. Automatic downloads for pro accounts added in V 0.2.0.
 
 ## Example
-only free railscasts downloads:
-
-    railscasts_download
 
 All railscasts including revised and pro (pro account required):
 
