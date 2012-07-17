@@ -10,6 +10,7 @@ module RailscastsDownload
       else
         @free_uri = options[:rss_uri]
       end
+      @proxy = options[:proxy]
     end
 
     def get_rss_body
@@ -36,6 +37,7 @@ module RailscastsDownload
 
       def login_to_pro( login_uri, login, password )
         @agent = Mechanize.new.get( login_uri )
+        @agent.set_proxy( @proxy.split(':') ) unless @proxy.nil?
         @agent.form.login = login
         @agent.form.password = password
         @page = @agent.form.submit
