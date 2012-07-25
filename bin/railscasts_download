@@ -26,7 +26,7 @@ optparse = OptionParser.new do|opts|
   end
 
   options[:proxy] = nil
-  opts.on( '-P', '--proxy', 'Use proxy eg. proxy.domain.com:3128.' ) do |proxy|
+  opts.on( '-P', '--proxy PROXY', 'Use proxy eg. proxy.domain.com:3128.' ) do |proxy|
     options[:proxy] = proxy
   end
 

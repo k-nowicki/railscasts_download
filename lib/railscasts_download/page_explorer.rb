@@ -36,8 +36,9 @@ module RailscastsDownload
       end
 
       def login_to_pro( login_uri, login, password )
-        @agent = Mechanize.new.get( login_uri )
-        @agent.set_proxy( @proxy.split(':') ) unless @proxy.nil?
+        @agent = Mechanize.new do |a|
+          a.set_proxy( *@proxy.split(':') ) unless @proxy.nil?
+        end.get( login_uri )
         @agent.form.login = login
         @agent.form.password = password
         @page = @agent.form.submit
