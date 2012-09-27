@@ -5,7 +5,7 @@ require_relative './page_explorer'
 module RailscastsDownload
   class Saver
     def initialize( options={} )
-      @downloader = options[:downloader] || Downloader.new
+      @downloader = options[:downloader] || Downloader.new(options[:proxy])
       options[:rss_uri] ||= "http://feeds.feedburner.com/railscasts" unless options[:pro]
       options[:login_uri] ||= "http://railscasts.com/login" if options[:pro]
       @page = options[:page_explorer] || PageExplorer.new( options )
